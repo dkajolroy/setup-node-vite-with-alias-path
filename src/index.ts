@@ -1,7 +1,6 @@
 import db_connect from "@src/config/db_config";
 import { importEnv } from "@src/config/env_config";
 import { AuthRoute } from "@src/routes/auth_route";
-import { PostRoute } from "@src/routes/post_route";
 import { UserRoute } from "@src/routes/user_route";
 import socket from "@src/socket/socket_server";
 import { errorHandler } from "@src/utils/error_handler";
@@ -46,7 +45,7 @@ socket(io);
 app.use("/api/auth", AuthRoute);
 app.use("/api/user", UserRoute);
 // Private routes
-app.use("/api/post", PostRoute);
+// app.use("/api/post", PostRoute);
 
 // make frontend inside client directory to run single port
 const root = path.resolve();
