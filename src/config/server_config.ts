@@ -1,9 +1,7 @@
-export const serverConfig = {
+export const server = {
   appName: "App Name",
-  version: "1.0.0",
-
-  // cookies
-  clientCookie: "active_user",
-  serverCookie: "access_token",
-  cookieExpire: 1000 * 60 * 60 * 24 * 30,
+  version: 1,
+  clientAuthCookie: "CLIENT_ACCESS",
+  serverAuthCookie: "SERVER_ACCESS",
+  cookieExpire: 1000 * 60 * 60 * 24 * 30, // 30 day
 };

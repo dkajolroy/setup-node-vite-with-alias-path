@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
+// import { serverConfig } from "../config/server_config";
 
-export function handleError(
+// error handler
+export function errorHandler(
   err: Error,
   req: Request,
   res: Response,
@@ -16,9 +18,13 @@ export function handleError(
         .status(400)
         .send({ message: "Please enter your valid details !" });
     if (err.name === "TokenExpiredError")
-      return res // mongoose validator min/max etc
+      return res // Expire login session error
         .status(400)
         .send({ message: "Expired your time or login session !" });
+    if (err.name === "MulterError")
+      return res // Upload error
+        .status(400)
+        .send({ message: "Upload failed !" });
     return res.status(400).send({ message: "Something want wrong !" });
   } catch (error) {
     res.status(500).send({ message: "Something went wrong" });

@@ -1,12 +1,16 @@
 import { NextFunction, Request, Response } from "express";
 
-export function verifyMailSuccess(
+// Forget change Password
+export default async function forgetPassword(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
   try {
-    // add signIn
+    //input validate
+    //find user
+    //update
+    //send data
   } catch (error) {
     next(error);
   }

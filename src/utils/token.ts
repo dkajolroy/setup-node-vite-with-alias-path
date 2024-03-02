@@ -1,12 +1,12 @@
-export function signToken(userId: any) {
-  // const {SECRETE_KEY} = env_config()
-  // jwt.sign({user:userId},SECRETE_KEY,{
-  //     expire
-  // })
+import { importEnv } from "@src/config/env_config";
+import Jwt from "jsonwebtoken";
+
+export function newToken(user: string) {
+  return Jwt.sign({ user }, importEnv().SECRET_KEY, {
+    expiresIn: "30d",
+  });
 }
-export function verifyToken(userId: any) {
-  // const {SECRETE_KEY} = env_config()
-  // jwt.sign({user:userId},SECRETE_KEY,{
-  //     expire
-  // })
+
+export function decodeToken(token: string) {
+  return Jwt.verify(token, importEnv().SECRET_KEY) as { user: string };
 }

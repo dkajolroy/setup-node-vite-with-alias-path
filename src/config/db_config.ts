@@ -1,14 +1,9 @@
-import { env_config } from "@src/config/env_config";
-
 import mongoose from "mongoose";
+import { importEnv } from "./env_config";
 
-export function db_config() {
-  const { DATABASE_URL } = env_config();
-
+export default function db_connect() {
   mongoose
-    .connect(DATABASE_URL)
-    .then(() => {
-      console.log("DB connected");
-    })
-    .catch((err) => console.log("DB connection failed"));
+    .connect(importEnv().DATABASE_URL)
+    .then(() => console.log("DB⚡Connected 😍"))
+    .catch(() => console.log("DB connection failed 😢!"));
 }
